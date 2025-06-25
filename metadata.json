@@ -1,0 +1,16 @@
+{
+  "name": "Component Placement Optimization",
+  "description": "Optimize the placement of components on a PCB for better performance, signal integrity, and thermal management. An AI-powered tool for agriculture-based electronic devices.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "tags": [
+    "Component Placement",
+    "PCB Layout",
+    "Signal Integrity",
+    "EDA",
+    "Agritech",
+    "Gemini"
+  ],
+  "prompt": ""
+}

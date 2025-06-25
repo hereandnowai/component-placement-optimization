@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Component Placement Optimization</title>
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/hereandnowai/images/refs/heads/main/favicon-logo-with-name.png">
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://esm.sh/react@^19.1.0",
+      "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+      "react/": "https://esm.sh/react@^19.1.0/",
+      "@google/genai": "https://esm.sh/@google/genai@^1.5.1",
+      "@/": "./"
+    }
+  }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Immediately invoked function to set the initial theme and language
+    (function() {
+      // Theme
+      function getInitialTheme() {
+        try {
+          const storedTheme = localStorage.getItem('theme');
+          if (storedTheme) {
+            return storedTheme;
+          }
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        } catch (e) {
+          return 'light';
+        }
+      }
+      const theme = getInitialTheme();
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+
+      // Language - sets lang attribute on <html>
+      function getInitialLanguage() {
+        try {
+          const storedLang = localStorage.getItem('appLanguage');
+          if (storedLang && ['en', 'fr', 'de', 'es'].includes(storedLang)) {
+            return storedLang;
+          }
+          const browserLang = navigator.language.split('-')[0];
+          return ['en', 'fr', 'de', 'es'].includes(browserLang) ? browserLang : 'en';
+        } catch (e) {
+          return 'en';
+        }
+      }
+      document.documentElement.lang = getInitialLanguage();
+    })();
+
+    // Tailwind CSS Configuration
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FFDF00',
+            secondary: '#004040',
+            accent: '#00796B', 
+            darkBg: '#1A202C',
+            lightText: '#F7FAFC',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e5e7eb;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #374151;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #004040;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00796B;
+    }
+  </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="./index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
